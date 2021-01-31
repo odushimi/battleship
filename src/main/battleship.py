@@ -460,7 +460,12 @@ class Game:
             self.status = 'Complete'
 
         self.round += 1
-        print(self)
+        
+        if self.is_over:
+            print('----------------------------\n')
+            print('Last round board status\n')
+            print('----------------------------')
+            print(self)
 
     @staticmethod
     def shoot(opponent: Player):
@@ -496,5 +501,27 @@ class Game:
 if __name__ == '__main__':
     # Run unittests
     # python -m unittest battleship_tests.py
-    pass
+
+
+    player_1_name = input("Enter Player 1 name: ")
+    player_2_name = input("Enter Player 2 name: ")
+
+    if not player_1_name:
+        player_1_name = 'Player 1'
+
+    if not player_2_name:
+        player_2_name = 'Player 2'
+
+
+
+    new_game = Game(player_1_name, player_2_name)
+
+    while not new_game.is_over:
+        new_game.play_round()
+
+    print ('You sunk my battleship')
+
+
+
+
 
